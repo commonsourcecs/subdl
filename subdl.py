@@ -30,22 +30,22 @@ osdb_token = None
 options = None
 
 BLACKLIST = [
-    "opensubtitles",
-    "addic7ed",
-    "joycasino",
-    "bitninja\.io",
-    "Please rate this subtitle at www\.osdb\.link",
-    "allsubs",
-    "firebit\.org",
-    "humanguardians\.com",
-    "subtitles by",
-    "recast\.ai",
-    "by mstoll",
-    "subs corrected",
-    "by tronar",
-    "titlovi",
-    "^_$",
-    "^- _$",
+    r"opensubtitles",
+    r"addic7ed",
+    r"joycasino",
+    r"bitninja\.io",
+    r"Please rate this subtitle at www\.osdb\.link",
+    r"allsubs",
+    r"firebit\.org",
+    r"humanguardians\.com",
+    r"subtitles by",
+    r"recast\.ai",
+    r"by mstoll",
+    r"subs corrected",
+    r"by tronar",
+    r"titlovi",
+    r"^_$",
+    r"^- _$",
 ]
 
 
@@ -221,7 +221,7 @@ def SearchSubtitlesByHash(filename, langs_search):
 
 
 def SearchSubtitlesByIMDBId(filename, langs_search, imdb_id):
-    result = re.search("\d+", imdb_id)
+    result = re.search(r"\d+", imdb_id)
     imdb_id = result.group(0)
     searchlist = [({"sublanguageid": langs_search, "imdbid": imdb_id})]
     print("Searching for subtitles for IMDB id=%s..." % (imdb_id), file=sys.stderr)
